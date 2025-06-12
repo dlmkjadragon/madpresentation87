@@ -124,7 +124,7 @@ const contentData = {
     example: `
   <ul>
     <li>Arranging 4 people in a line: P(4) = 4! = 24 ways.</li>
-    <li>Selecting 2 out of 5 books to place on a shelf: P(5, 2) = 5 × 4 = 20 arrangements.</li>
+    <li>Selecting 2 out of 5 books to place on a shelf: P(5, 2) = 20 arrangements.</li>
   </ul>`
   },
   "Division": {
