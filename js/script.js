@@ -1,279 +1,148 @@
 const contentData = {
-  "Addition": {
+  "Introduction to MST": {
     theory: `
-    <ul>
-    <li>The addition principle applies when there are several distinct tasks or choices, and only one of them can be performed at a time. If task A can be done in m ways and task B in n ways, and the two tasks are mutually exclusive, then the total number of ways to perform either task is m + n. This principle helps count the total possibilities when options do not overlap.
-</li>
-    <li>This principle can be extended to more than two mutually exclusive cases. If there are k disjoint sets with sizes a₁, a₂, ..., aₖ, then the total number of outcomes is a₁ + a₂ + ... + aₖ.</li>
-    <li>Unlike the multiplication principle, which counts combinations of sequential choices, the addition principle counts distinct, individual options where only one can be selected.
-</li>
-  </ul>`,
+      <ul>
+        <li>In discrete mathematics, a Minimum Spanning Tree (MST) is defined for a connected, undirected, weighted graph.</li>
+        <li>A spanning tree is a subgraph that includes all the vertices and forms a tree (i.e., no cycles).</li>
+        <li>Among all possible spanning trees, the MST is the one with the minimum total edge weight.</li>
+      </ul>`,
     formula: `
-    <ul>
-  <li><strong>Basic Case (Two sets):</strong> Total Outcomes = m + n</li>
-  <li><strong>General Case:</strong> If there are k disjoint sets A₁, A₂, ..., Aₖ with sizes a₁, a₂, ..., aₖ, then:<br>
-      Total Outcomes = a₁ + a₂ + ... + aₖ</li>
-</ul>`,
+      <ul>
+        <li>Let G=(V,E) be a connected weighted graph.</li>
+        <li>An MST is a subset of edges T⊆E such that:</li>
+        <li>T spans all vertices: ∣T∣=∣V∣−1</li>
+        <li>∑e∈T(w(e)) is minimized</li>
+      </ul>
+      <img src="../Presentation/img/min.png" alt="MST example" style="max-width:100%; margin-top:10px;" />`,
     example: `
-    <ul>
-  <li>If a student can choose between 3 science electives or 2 art electives, they have 3 + 2 = 5 total options.</li>
-  <li>A vending machine offers 4 snack items and 5 drink items, but only one item can be selected: 4 + 5 = 9 choices.</li>
-</ul>`
+      <ul>
+        <li>Suppose a network of computers needs to be connected with cables.</li>
+        <li>Using an MST ensures that all computers are connected with the least total cable length, avoiding redundant connections.</li>
+      </ul>`
   },
-  "Multiplication": {
+
+  "Intro to Greedy Als": {
     theory: `
-    <ul>
-  <li>The multiplication principle applies when making a sequence of independent choices, where each choice does not affect the others.</li>
-  <li>If one task can be done in m ways and a second task in n ways, then performing both tasks in sequence can be done in m × n ways.</li>
-  <li>This principle extends to more than two tasks: Total = a₁ × a₂ × ... × aₖ</li>
-  <li>All tasks must be independent — the number of ways for one task must not depend on previous choices.</li>
-</ul>`,
+      <ul>
+        <li>A greedy algorithm builds a solution step-by-step by always choosing the best available option at each step.</li>
+        <li>It does not revise previous decisions.</li>
+        <li>Greedy algorithms are generally fast and simple, but may not always produce an optimal solution for every problem.</li>
+        <li>However, for certain problems like Minimum Spanning Tree, greedy algorithms are guaranteed to produce optimal results.</li>
+      </ul>`,
     formula: `
-    <ul>
-  <li><strong>Basic Case (Two tasks):</strong> Total Outcomes = m × n</li>
-  <li><strong>Extended Case:</strong> For k independent tasks with options a₁, a₂, ..., aₖ:<br>
-      Total Outcomes = a₁ × a₂ × ... × aₖ</li>
-</ul>`,
+      <ul>
+        <li>Choose the locally optimal choice based on some criterion (e.g., minimum weight).</li>
+        <li>Ensure that the partial solution remains feasible (e.g., no cycles in MST).</li>
+        <li>Repeat until a complete solution is formed.</li>
+      </ul>
+      <img src="../Presentation/img/al.png" alt="MST example" style="max-width:100%; margin-top:10px;" />`,
     example: `
-    <ul>
-  <li>You have 3 types of bread and 2 types of filling. Choosing one bread and one filling gives 3 × 2 = 6 sandwich combinations.</li>
-  <li>A password consists of 4 digits, each chosen from 0 to 9. There are 10 × 10 × 10 × 10 = 10,000 possible passwords.</li>
-</ul>`
+      <ul>
+        <li>In Prim’s Algorithm: select the smallest weight edge that connects the growing tree to an unvisited vertex.</li>
+        <li>In Kruskal’s Algorithm: select the next smallest edge that does not form a cycle with the already chosen edges.</li>
+      </ul>`
   },
-  "Arrangement": {
+
+  "Prim's Algorithm": {
     theory: `
+      <ul>
+        <li>Prim’s Algorithm, also known as the Prim–Jarník algorithm, is one of the fundamental methods for finding a Minimum Spanning Tree (MST) in a connected weighted graph.</li>
+        <li>An MST is a spanning tree that includes all the vertices of the original graph, and the total weight of its edges is minimized.</li>
+        <li>The algorithm was first introduced by the Czech mathematician Vojtěch Jarník in 1930 and later rediscovered by Robert Prim in 1957.</li>
+      </ul>`,
+    formula: `
+      <ul>
+        <li>Initialization: Start by selecting any edge with the smallest weight in the graph and include it in the growing spanning tree.</li>
+        <li>Tree Expansion: Repeat the process of adding edges until the tree has exactly n−1 edges, where n is the number of vertices in the graph.</li>
+      </ul>
+      <img src="../Presentation/img/counting.png" alt="MST example" style="max-width:100%; margin-top:10px;" />`,
+    example: `
     <ul>
-  <li>Arrangements involve the concept of permutations, which count the number of possible ways to order a set of items.</li>
-  <li>Order matters in arrangements — changing the position of items creates a different outcome.</li>
-  <li>Common scenarios include arranging people in a line, books on a shelf, or digits in a code.</li>
-  <li>All elements must be distinct unless specified otherwise.</li>
-</ul>`,
-    formula: `
-  <li><strong>Partial Arrangement:</strong>
-      <div class="fraction-line">
-        <div style="margin-right: 10px;">P(n, r) =</div>
-        <div class="fraction">
-          <div class="top">n!</div>
-          <div class="bottom">(n − r)!</div>
-        </div>
-      </div>
-      </li>
-</ul>`,
-    example: `
-<ul>
-  <li>Assigning 3 different roles (leader, speaker, recorder) to 6 team members is an arrangement task:<br>
-      P(6, 3) = 6 × 5 × 4 = 120 ways.</li>
-  <li>Selecting 4 books to display from 10 and placing them in order:<br>
-      P(10, 4) = 10 × 9 × 8 × 7 = 5040 ways.</li>
-</ul>`
-  },
-  "Combination": {
-  theory: `
-  <ul>
-    <li>Combinations are selections of items from a larger set where <strong>order does not matter</strong>.</li>
-    <li>They count how many ways you can choose a subset of r elements from a total of n elements.</li>
-    <li>Unlike permutations, switching the order of elements in a combination does not create a new outcome.</li>
-    <li>Useful for problems where groups or committees are formed without specific roles or positions.</li>
-  </ul>`,
-  formula: `
-  <ul>
-    <li>This represents the number of ways to choose r elements from n without considering order.</li>
-    <li><strong>Combination Formula:</strong></li>
-    <li>
-      <div class="fraction-line">
-        <div style="margin-right: 10px;">C(n, r) =</div>
-        <div class="fraction">
-          <div class="top">n!</div>
-          <div class="bottom">r!(n − r)!</div>
-        </div>
-      </div>
-    </li>
-
-  </ul>`,
-  example: `
-  <ul>
-    <li>Choosing 3 students from a class of 5: C(5, 3) = 10 combinations.</li>
-    <li>Selecting 2 fruits from 4 types (apple, banana, cherry, grape): C(4, 2) = 6 ways.</li>
-  </ul>`
-},
-  "Permutation": {
-    theory: `
-  <ul>
-    <li>Permutations are ordered arrangements of elements taken from a set.</li>
-    <li>They count the number of ways to <strong>rearrange elements where order matters</strong>.</li>
-    <li>There are two main types: full permutation (arranging all elements) and partial permutation (arranging only r elements).</li>
-    <li>Commonly used in ranking, seating, coding, or choosing ordered sequences.</li>
-  </ul>`,
-    formula: `
-  <ul>
-    <li><strong>Full Permutation:</strong> If all n elements are arranged:
-      <div style="font-size: 22px; margin-top: 6px;">
-        P(n) = n!
-      </div>
-    </li>
-    <li><strong>Partial Permutation:</strong> If r elements are selected and arranged from n:
-      <div class="fraction-line">
-        <div style="margin-right: 10px;">P(n, r) =</div>
-        <div class="fraction">
-          <div class="top">n!</div>
-          <div class="bottom">(n − r)!</div>
-        </div>
-      </div>
-    </li>
-  </ul>`,
-    example: `
-  <ul>
-    <li>Arranging 4 people in a line: P(4) = 4! = 24 ways.</li>
-    <li>Selecting 2 out of 5 books to place on a shelf: P(5, 2) = 20 arrangements.</li>
-  </ul>`
-  },
-  "Division": {
-    theory: `
-  <ul>
-    <li>The Division Principle is used when we <strong>overcount</strong> outcomes due to repeated or symmetric arrangements.</li>
-    <li>It helps correct the total by dividing by the number of times each distinct outcome is counted.</li>
-    <li>Commonly used in problems involving identical objects, handshake counting, or circular arrangements.</li>
-  </ul>`,
-    formula: `
-  <ul>
-    <li><strong>General Formula:</strong>
-      <div class="fraction-line">
-        <div style="margin-right: 10px;">Actual outcomes =</div>
-        <div class="fraction">
-          <div class="top">Total arrangements</div>
-          <div class="bottom">Number of repetitions</div>
-        </div>
-      </div>
-    </li>
-    <li>This formula adjusts for the overcounted scenarios where each valid outcome appears multiple times in the total.</li>
-  </ul>`,
-    example: `
-<ul>
-  <li>
-    5 people shaking hands in pairs:
-    <div class="fraction-line" style="margin-top: 6px;">
-      <div class="fraction">
-        <div class="top">5 × 4</div>
-        <div class="bottom">2</div>
-      </div>
-      <div style="margin-left: 10px;">= 10 handshakes</div>
-    </div>
-  </li>
-  <li>
-    Arranging the letters in “LEVEL” (with 2 L's and 2 E's):
-    <div class="fraction-line" style="margin-top: 6px;">
-      <div class="fraction">
-        <div class="top">5!</div>
-        <div class="bottom">2! × 2!</div>
-      </div>
-      <div style="margin-left: 10px;">= 30 distinct arrangements</div>
-    </div>
-  </li>
-</ul>`
-},
-  "Pigeonhole": {
-  theory: `
-  <ul>
-    <li>The Pigeonhole Principle states that if more items are placed into fewer containers, then at least one container must hold more than one item.</li>
-    <li>It is a fundamental concept in discrete mathematics used to prove existence of repetition or collisions.</li>
-    <li>Often used in problems where objects are grouped or distributed across categories.</li>
-  </ul>`,
-
-  formula: `
-  <ul>
-    <li><strong>Basic Principle:</strong> If <strong>n</strong> items are placed into <strong>k</strong> boxes and n > k, then at least one box contains more than one item.</li>
-    <li><strong>Generalized Form:</strong>
-      <div class="fraction-line">
-        <div style="margin-right: 10px;">At least one box has</div>
-        <div class="fraction">
-          <div class="top">n</div>
-          <div class="bottom">k</div>
-        </div>
-        <div style="margin-left: 10px;">or more items (rounded up)</div>
-      </div>
-    </li>
-    <li>This is expressed as: at least ⌈n / k⌉ items in some box.</li>
-  </ul>`,
-
-  example: `
-  <ul>
-    <li>If 13 socks are placed into 12 drawers, then at least one drawer must contain ≥ 2 socks.</li>
-    <li>In a group of 367 people, at least two must share the same birthday (since there are only 366 possible birthdays).</li>
-    <li>Distributing 50 candies among 6 kids guarantees at least one child receives at least
-      <div class="fraction-line" style="display: inline-flex; margin-left: 6px;">
-        <div class="fraction">
-          <div class="top">50</div>
-          <div class="bottom">6</div>
-        </div>
-      </div>
-      = ⌈8.33⌉ = 9 candies.
-    </li>
-  </ul>`
-},
-  "Inclusion-Exclusion": {
-  theory: `
-  <ul>
-    <li>The Inclusion-Exclusion Principle is used to count the number of elements in the union of overlapping sets.</li>
-    <li>It corrects the overcounting caused when elements belong to more than one set.</li>
-    <li>As we include each set, we subtract intersections, add back triple overlaps, and so on.</li>
-    <li>This principle can be applied to 2, 3, or more sets.</li>
-  </ul>`,
-
-  formula: `
-<ul>
-  <li><strong>Two Sets:</strong> A and B:</li>
-</ul>
-<div style="font-size: 22px; margin-left: 20px; margin-top: -10px; margin-bottom: 20px;">
-  |A ∪ B| = |A| + |B| − |A ∩ B|
-</div>
-
-<ul>
-  <li><strong>Three Sets:</strong> A, B, and C:</li>
-</ul>
-<div style="font-size: 20px; margin-left: 20px; margin-top: -10px;">
-  |A ∪ B ∪ C| = |A| + |B| + |C| − |A ∩ B| − |A ∩ C| − |B ∩ C| + |A ∩ B ∩ C|
-</div>
-`
-,
-
-  example: `
-<div style="display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap;">
-
-  <div style="flex: 1; min-width: 250px;">
-    <ul>
-      <li>In a class:
-        <ul style="margin-top: 6px;">
-          <li>20 students like Math</li>
-          <li>15 like Science</li>
-          <li>5 like both</li>
-        </ul>
-        <div style="margin-top: 6px;">
-          Total who like Math or Science:<br>
-          |M ∪ S| = 20 + 15 − 5 = 30
-        </div>
-      </li>
+      <li>Imagine you need to build a road network connecting six cities: A, B, C, D, E, and F, with the minimum total construction cost. The numbers on the roads between the cities represent the construction costs (edge weights). Your goal is to connect all the cities such that the total cost is minimized, and there are no redundant roads forming cycles. Find a subset of roads that connects all six cities while ensuring the lowest possible total construction cost, and that no cycles are formed.</li>
     </ul>
-  </div>
+    <img src="../Presentation/img/graph.png" alt="MST example" style="max-width:100%; margin-top:10px;" />`
+  },
 
-  <div style="flex: 1; min-width: 250px;">
-    <ul>
-      <li>In a survey:
-        <ul style="margin-top: 6px;">
-          <li>50 people like tea</li>
-          <li>30 like coffee</li>
-          <li>10 like both</li>
-        </ul>
-        <div style="margin-top: 6px;">
-          Total who like at least one:<br>
-          |Tea ∪ Coffee| = 50 + 30 − 10 = 70
-        </div>
-      </li>
-    </ul>
-  </div>
+  "Kruskal's Al": {
+    theory: `
+      <ul>
+        <li>Kruskal’s Algorithm is a greedy algorithm in graph theory used to find a Minimum Spanning Tree (MST) for a connected, undirected, weighted graph.</li>
+        <li>A Minimum Spanning Tree is a subset of the edges of a graph such that: </li>
+      </ul>
+      <pre><code>
+  All vertices are connected.
+  No cycles are formed.
+  The total edge weight is minimized.
+      </code></pre>`,
+    formula: `
+      <ul>
+        <li>Kruskal’s Algorithm follows the greedy approach — it always selects the edge with the smallest weight that does not form a cycle.</li>
+      </ul>
+      <img src="../Presentation/img/fr.png" alt="MST example" style="max-width:100%; margin-top:10px;" />
+    `,
+    example: `
+      <ul>
+        <li>Build a Minimum Spanning Tree (MST) that connects all the cities (vertices) with the minimum total cost and no cycles.</li>
+      </ul>
+      <img src="../Presentation/img/sr.png" alt="MST example" style="max-width:100%; margin-top:10px;" />`
+  },
 
-</div>`
-}
+  "Prim Pseudocode": {
+    theory: `
+      <pre><code>procedure Prim(G)
+      procedure Prim(G: weighted connected undirected graph with n vertices)
+          T := a minimum-weight edge
+          for i := 1 to n − 2
+              e := an edge of minimum weight incident to a vertex in T 
+                  and not forming a simple circuit in T if added to T
+              T := T with e added
+          return T  {T is a minimum spanning tree of G}
+      </code></pre>`,
+    formula: `
+      `,
+    example: ``
+  },
+
+  "Kruskal Pseudocode": {
+    theory: `<pre><code>procedure Kruskal(G: weighted connected undirected graph with n vertices)
+          T := empty graph
+          for i := 1 to n − 1
+              e := any edge in G with smallest weight that does not form a simple circuit
+                  when added to T
+              T := T with e added
+          return T  {T is a minimum spanning tree of G}
+      </code></pre>`,
+    formula: `
+      `,
+    example: ``
+  },
+
+  "Comparison": {
+    theory: `
+      <table>
+        <tr><th>Feature</th><th>Prim</th><th>Kruskal</th></tr>
+        <tr><td>Start from</td><td>Any vertex</td><td>Edge list</td></tr>
+        <tr><td>Focus</td><td>Growing tree</td><td>Disjoint edges</td></tr>
+        <tr><td>Data structure</td><td>Priority Queue</td><td>Union–Find</td></tr>
+        <tr><td>Best for</td><td>Dense graphs</td><td>Sparse graphs</td></tr>
+      </table>`,
+    formula: ``,
+    example: ``
+  },
+
+  "Complexity": {
+    theory: `
+      <ul>
+        <li><strong>Prim:</strong> O(m log n) with binary heap.</li>
+        <li><strong>Kruskal:</strong> O(m log m) for sorting + union–find.</li>
+        <li>When m ≈ n<sup>2</sup> (dense), Prim is preferable.</li>
+        <li>When m ≪ n<sup>2</sup> (sparse), Kruskal is faster.</li>
+      </ul>`,
+    formula: ``,
+    example: ``
+  }
 };
+
 
 const navItems = document.querySelectorAll(".nav-item");
 const contentTitle = document.getElementById("content-title");
