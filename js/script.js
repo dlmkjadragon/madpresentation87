@@ -13,7 +13,7 @@ const contentData = {
         <li>T spans all vertices: ∣T∣=∣V∣−1</li>
         <li>∑e∈T(w(e)) is minimized</li>
       </ul>
-      <img src="../Presentation/img/min.png" alt="MST example" style="max-width:100%; margin-top:10px;" />`,
+      <img src="../img/min.png" alt="MST example" style="max-width:100%; margin-top:10px;" />`,
     example: `
       <ul>
         <li>Suppose a network of computers needs to be connected with cables.</li>
@@ -35,7 +35,7 @@ const contentData = {
         <li>Ensure that the partial solution remains feasible (e.g., no cycles in MST).</li>
         <li>Repeat until a complete solution is formed.</li>
       </ul>
-      <img src="../Presentation/img/al.png" alt="MST example" style="max-width:100%; margin-top:10px;" />`,
+      <img src="../img/al.png" alt="MST example" style="max-width:100%; margin-top:10px;" />`,
     example: `
       <ul>
         <li>In Prim’s Algorithm: select the smallest weight edge that connects the growing tree to an unvisited vertex.</li>
@@ -55,12 +55,12 @@ const contentData = {
         <li>Initialization: Start by selecting any edge with the smallest weight in the graph and include it in the growing spanning tree.</li>
         <li>Tree Expansion: Repeat the process of adding edges until the tree has exactly n−1 edges, where n is the number of vertices in the graph.</li>
       </ul>
-      <img src="../Presentation/img/counting.png" alt="MST example" style="max-width:100%; margin-top:10px;" />`,
+      <img src="../img/counting.png" alt="MST example" style="max-width:100%; margin-top:10px;" />`,
     example: `
     <ul>
       <li>Imagine you need to build a road network connecting six cities: A, B, C, D, E, and F, with the minimum total construction cost. The numbers on the roads between the cities represent the construction costs (edge weights). Your goal is to connect all the cities such that the total cost is minimized, and there are no redundant roads forming cycles. Find a subset of roads that connects all six cities while ensuring the lowest possible total construction cost, and that no cycles are formed.</li>
     </ul>
-    <img src="../Presentation/img/graph.png" alt="MST example" style="max-width:100%; margin-top:10px;" />`
+    <img src="../img/graph.png" alt="MST example" style="max-width:100%; margin-top:10px;" />`
   },
 
   "Kruskal's Al": {
@@ -78,13 +78,13 @@ const contentData = {
       <ul>
         <li>Kruskal’s Algorithm follows the greedy approach — it always selects the edge with the smallest weight that does not form a cycle.</li>
       </ul>
-      <img src="../Presentation/img/fr.png" alt="MST example" style="max-width:100%; margin-top:10px;" />
+      <img src="../img/fr.png" alt="MST example" style="max-width:100%; margin-top:10px;" />
     `,
     example: `
       <ul>
         <li>Build a Minimum Spanning Tree (MST) that connects all the cities (vertices) with the minimum total cost and no cycles.</li>
       </ul>
-      <img src="../Presentation/img/sr.png" alt="MST example" style="max-width:100%; margin-top:10px;" />`
+      <img src="../img/sr.png" alt="MST example" style="max-width:100%; margin-top:10px;" />`
   },
 
   "Prim Pseudocode": {
